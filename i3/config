@@ -6,9 +6,6 @@ set $mod Mod4
 # set wallpaper
 exec --no-startup-id feh --bg-scale ~/main/pictures/wallpaper.png
 
-# run picom for transparency and blur
-exec --no-startup-id picom --experimental-backends
-
 # remove title bar
 font pango:FreeMono 0
 
@@ -36,6 +33,13 @@ exec --no-startup-id /opt/brave-bin/brave --app-id=pjibgclleladliembfgfagdaldike
 
 # lock the screen on timeout
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# run picom for transparency and blur
+exec --no-startup-id picom --experimental-backends
+
+# toggle picom on and off
+bindsym $mod+p exec --no-startup-id picom --experimental-backends
+bindsym $mod+Shift+p exec --no-startup-id pkill picom
 
 # modify volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
@@ -128,7 +132,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # lock the system
-bindsym $mod+Shift+x exec i3lock
+bindsym $mod+Shift+x exec systemctl suspend
 
 # take screenshot
 mode "screenshot" {
