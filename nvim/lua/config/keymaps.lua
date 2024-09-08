@@ -1,78 +1,41 @@
 -- Nvim
-vim.keymap.set('n', '<leader>e', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>e', vim.cmd.Ex)		-- open file explorer
+vim.keymap.set({'n', 'v'}, '<leader>y', '"+Y') 		-- yank line (copy)
+vim.keymap.set({'n', 'v'}, '<leader>d', '"+D') 		-- delete line (cut)
+vim.keymap.set({'n', 'v'}, '<leader>p', '"+P')		-- paste before cursor
+
 
 -- For Plugins
 local fn = require('config.lazy')
 
+
 -- Telescope
-vim.keymap.set('n', '<leader><leader>', function() 
+-- search files
+vim.keymap.set('n', '<leader><leader>', function()
 	fn.telescope('find_files')
 end)
-vim.keymap.set('n', '<leader>f', function() 
+
+-- search inside of files
+vim.keymap.set('n', '<leader>f', function()
 	fn.telescope('live_grep')
 end)
+
+
+-- Fugitive
+vim.keymap.set('n', '<leader>g', vim.cmd.Git)	-- show git status
+
 
 -- Harpoon
 local harpoon = require('harpoon')
 harpoon:setup()
 
--- Setting Telescope as Harpoon's UI
-local conf = require('telescope.config').values
-
-local function toggle_telescope(harpoon_files)
-    local file_paths = {}
-    for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item.value)
-    end
-
-    require('telescope.pickers').new({}, {
-        prompt_title = 'Harpoon',
-        finder = require('telescope.finders').new_table({
-            results = file_paths,
-        }),
-        previewer = conf.file_previewer({}),
-        sorter = conf.generic_sorter({}),
-    }):find()
-end
-
-vim.keymap.set('n', '<leader>h', function() 
-	toggle_telescope(harpoon:list()) 
+-- open harpoon window
+vim.keymap.set('n', '<leader>h', function()
+	fn.harpoon(harpoon:list())
 end, { desc = 'Open harpoon window' })
 
-vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)
-vim.keymap.set('n', '<leader>1', function() harpoon:list():select(1) end)
-vim.keymap.set('n', '<leader>2', function() harpoon:list():select(2) end)
-vim.keymap.set('n', '<leader>3', function() harpoon:list():select(3) end)
-vim.keymap.set('n', '<leader>4', function() harpoon:list():select(4) end)
-
--- Fugitive
-vim.keymap.set('n', '<leader>g', vim.cmd.Git)
-
--- LSP
---- note: diagnostics are not exclusive to lsp servers
--- so these can be global keybindings
-vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
-vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>') 
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'LSP actions',
-  callback = function(event)
-    local opts = {buffer = event.buf}
-
-    -- these will be buffer-local keybindings
-    -- because they only work if you have an active language server
-
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  end
-})
-
+vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)		-- add file
+vim.keymap.set('n', '<leader>1', function() harpoon:list():select(1) end)	-- open 1st file
+vim.keymap.set('n', '<leader>2', function() harpoon:list():select(2) end)	-- open 2nd file
+vim.keymap.set('n', '<leader>3', function() harpoon:list():select(3) end)	-- open 3rd file
+vim.keymap.set('n', '<leader>4', function() harpoon:list():select(4) end)	-- open 4th file
