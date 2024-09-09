@@ -40,7 +40,9 @@ require('mason-lspconfig').setup({
 })
 
 cmp.setup({
-	sources = { name = 'nvim_lsp' },
+	sources = {
+		{ name = 'nvim_lsp' }
+	},
 	mapping = cmp.mapping.preset.insert({
 		['<CR>'] = cmp.mapping.confirm({}), 	-- <Enter> key to confirm completion item
 		['<C-Space>'] = cmp.mapping.complete(),	-- <Ctrl> + <Space> to trigger completion menu
