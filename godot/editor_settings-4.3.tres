@@ -159,3 +159,7 @@ shortcuts = [{
 "name": "editor/clear_output",
 "shortcuts": [SubResource("InputEventKey_t8r7y")]
 }]
+metadata/script_setup_templates_dictionary = {
+"Area2D": "0NodeDefault",
+"Node": "0NodeDefault"
+}
