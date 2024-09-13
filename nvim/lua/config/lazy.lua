@@ -26,11 +26,12 @@ require('lazy').setup({
 })
 
 
+local lsp = require('lspconfig')
 -- Setup LSP
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local cmp = require('cmp')
 local default_setup = function(server)
-	require('lspconfig')[server].setup({ capabilities = lsp_capabilities })
+	lsp[server].setup({ capabilities = lsp_capabilities })
 end
 
 require('mason').setup({})
@@ -56,7 +57,7 @@ cmp.setup({
 
 
 -- Ignore 'vim' as an error in lua
-require('lspconfig').lua_ls.setup({
+lsp.lua_ls.setup({
 	capabilities = lsp_capabilities,
 	settings = {
 		Lua = {
@@ -69,6 +70,20 @@ require('lspconfig').lua_ls.setup({
 	}
 })
 
+-- Ignore 'line too long' warning in pylsp
+lsp.pylsp.setup({
+	capabilities = lsp_capabilities,
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					ignore = { 'E501' },
+					maxLineLength = 120,
+				}
+			}
+		}
+	}
+})
 
 -- Setup required functions
 local fn = {}
