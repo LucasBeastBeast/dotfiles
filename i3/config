@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale ~/main/pictures/wallpaper.png
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
 
 # remove title bar
 font pango:FreeMono 0
@@ -17,28 +17,25 @@ gaps inner 27
 gaps outer 10
 
 # assign workspaces to the apps
-assign [class="kitty"] 1
 assign [class="Godot"] 2
-for_window [title="untitled \(DEBUG\)"] move to workspace 3
-assign [instance="brave"] 4
-assign [class="discord"] 5
-assign [instance="crx_pjibgclleladliembfgfagdaldikeohf"] 6
+assign [class="firefox"] 3
+assign [class="discord"] 4
 
 # run apps on startup
 exec --no-startup-id polybar
+exec --no-startup-id dunst
 exec --no-startup-id kitty
-exec --no-startup-id brave
+exec --no-startup-id firefox
 exec --no-startup-id discord
-exec --no-startup-id /opt/brave-bin/brave --app-id=pjibgclleladliembfgfagdaldikeohf
 
 # lock the screen on timeout
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # run picom for transparency and blur
-exec --no-startup-id picom --experimental-backends
+exec --no-startup-id picom
 
 # toggle picom on and off
-bindsym $mod+p exec --no-startup-id picom --experimental-backends
+bindsym $mod+p exec --no-startup-id picom
 bindsym $mod+Shift+p exec --no-startup-id pkill picom
 
 # modify volume
@@ -52,9 +49,8 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 
 # start apps
 bindsym $mod+Return exec kitty
-bindsym $mod+b exec brave
+bindsym $mod+b exec firefox
 bindsym $mod+n exec discord
-bindsym $mod+m exec /opt/brave-bin/brave --app-id=pjibgclleladliembfgfagdaldikeohf
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -136,7 +132,7 @@ bindsym $mod+Shift+x exec systemctl suspend
 
 # take screenshot
 mode "screenshot" {
-	set $path "$HOME/main/screenshots/"
+	set $path "$HOME/Screenshots/"
     set $name "$(date +"%Y%m%d_%H%M%S").png"
     bindsym r exec --no-startup-id scrot -s $path$name
     bindsym w exec --no-startup-id scrot -u $path$name
