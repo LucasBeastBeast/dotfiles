@@ -1,1 +1,0 @@
-/home/lucasbeastbeast/.bash_logout
