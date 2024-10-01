@@ -132,13 +132,12 @@ bindsym $mod+Shift+x exec sudo systemctl suspend
 
 # take screenshot
 mode "screenshot" {
-	set $path "$HOME/Screenshots/"
+	set $path "$HOME/Media/Screenshots/"
     set $name "$(date +"%Y%m%d_%H%M%S").png"
-    bindsym r exec --no-startup-id scrot -s $path$name
-    bindsym w exec --no-startup-id scrot -u $path$name
-    bindsym Return exec --no-startup-id scrot $path$name
-    bindsym d exec kitty $path ; mode "default"
-    bindsym f exec brave $path"$(ls -t $path | head -n 1)" ; mode "default"
+    bindsym --release r exec --no-startup-id scrot -s $path$name ; mode "default"
+    bindsym w exec --no-startup-id scrot -u $path$name ; mode "default"
+    bindsym Return exec --no-startup-id scrot $path$name ; mode "default"
+    bindsym f exec firefox $path"$(ls -t $path | head -n 1)" ; mode "default"
     bindsym Escape mode "default"
 }
 bindsym Print mode "screenshot"
