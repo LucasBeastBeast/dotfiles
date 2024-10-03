@@ -5,7 +5,7 @@
 !godot/
 !i3/
 !kitty/
-!neofetch/
+!fastfetch/
 !nvim/
 !picom/
 !polybar/
@@ -17,7 +17,7 @@
 !godot/**
 !i3/**
 !kitty/**
-!neofetch/**
+!fastfetch/**
 !nvim/**
 !picom/**
 !polybar/**
