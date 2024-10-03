@@ -11,6 +11,7 @@
 !polybar/
 !X11/
 !dunst/
+!grub-theme/
 
 !BetterDiscord/**
 !godot/**
@@ -22,3 +23,4 @@
 !polybar/**
 !X11/**
 !dunst/**
+!grub-theme/**
