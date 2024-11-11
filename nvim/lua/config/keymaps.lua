@@ -1,8 +1,5 @@
 -- Nvim
 vim.keymap.set('n', '<leader>e', vim.cmd.Ex)		-- open file explorer
-vim.keymap.set({'n', 'v'}, '<leader>y', '"+Y') 		-- yank line (copy)
-vim.keymap.set({'n', 'v'}, '<leader>d', '"+D') 		-- delete line (cut)
-vim.keymap.set({'n', 'v'}, '<leader>p', '"+P')		-- paste before cursor
 
 
 -- For Plugins
@@ -35,7 +32,9 @@ vim.keymap.set('n', '<leader>h', function()
 end, { desc = 'Open harpoon window' })
 
 vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)		-- add file
+vim.keymap.set('n', '<leader>r', function() harpoon:list():remove() end)	-- remove all files
 vim.keymap.set('n', '<leader>1', function() harpoon:list():select(1) end)	-- open 1st file
 vim.keymap.set('n', '<leader>2', function() harpoon:list():select(2) end)	-- open 2nd file
 vim.keymap.set('n', '<leader>3', function() harpoon:list():select(3) end)	-- open 3rd file
 vim.keymap.set('n', '<leader>4', function() harpoon:list():select(4) end)	-- open 4th file
+vim.keymap.set('n', '<leader>5', function() harpoon:list():select(5) end)	-- open 5th file
