@@ -1,6 +1,6 @@
 [gd_resource type="EditorSettings" load_steps=2 format=3]
 
-[sub_resource type="InputEventKey" id="InputEventKey_wspde"]
+[sub_resource type="InputEventKey" id="InputEventKey_3bndh"]
 command_or_control_autoremap = true
 alt_pressed = true
 keycode = 75
@@ -158,7 +158,7 @@ editors/3d_gizmos/gizmo_colors/joint_body_b = Color(0.6, 0.9, 1, 1)
 editors/3d_gizmos/gizmo_colors/fog_volume = Color(0.5, 0.7, 1, 1)
 shortcuts = [{
 "name": "editor/clear_output",
-"shortcuts": [SubResource("InputEventKey_wspde")]
+"shortcuts": [SubResource("InputEventKey_3bndh")]
 }]
 metadata/script_setup_templates_dictionary = {
 "Area2D": "0NodeDefault",

@@ -1,5 +1,5 @@
 {
-    "ZeresPluginLibrary": true,
-    "Double Click To Edit": true,
-    "PreviewMessage": true
+    "ZeresPluginLibrary": false,
+    "Double Click To Edit": false,
+    "PreviewMessage": false
 }
